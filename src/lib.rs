@@ -29,7 +29,7 @@ impl Backend {
     
     pub async fn connect_mongodb(&mut self, mongodb_url: String, default_database: Option<String>) -> Result<(), Box<dyn std::error::Error>> {
         let mut mongo_options = ClientOptions::parse(mongodb_url).await?;
-        mongo_options.default_database = Some(default_database.unwrap_or("test".to_string()));
+        mongo_options.default_database = Some(default_database.unwrap_or("lbdatabase".to_string()));
         let mongo_client = Client::with_options(mongo_options)?;
 
         self.mongo_client = Some(mongo_client);
